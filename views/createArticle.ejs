@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+   <link href="https://cdnjs.cloudflare.com/ajax/libs/simple-line-icons/2.4.1/css/simple-line-icons.min.css"
+      rel="stylesheet">
+      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+   <!-- <link rel="stylesheet" href="assets/css/style.css"> -->
+   <link rel="stylesheet" href="/style/cssprofilr.css">
+   <title>Document</title>
+</head>
+
+<body>
+   <div class="container rounded bg-white mt-5 mb-5 col-md-10">
+      <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 11">
+      <div id="liveToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true" data-bs-delay="5000">
+        <div class="toast-header">
+          <!-- <img src="..." class="rounded me-2" alt="..."> -->
+          <strong class="me-auto">article successfully</strong>
+          <small></small>
+          <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close" ></button>
+        </div>
+        <div class="toast-body">
+          article create successfully
+        </div>
+      </div>
+    </div>
+      <nav class="navbar navbar-expand-lg navbar-light bg-light">
+         <a class="btn btn-dark" href="javascript:history.back()" >back to profile</a>
+         <div class="container-fluid">
+            <h1>Create Article</h1>
+            <!-- <span class="navbar-toggler-icon"></span> -->
+            <div class="collapse navbar-collapse" id="navbarNav">
+               <ul class="navbar-nav">
+                  <li class="nav-item">
+                  </li>
+               </ul>
+            </div>
+         </div>
+      </nav>
+      <div class="row">
+         <div class="col-md-12 border-right">
+            <div class="p-5 py-5">
+               
+               <form action="" enctype="multipart/form-data" id="formAddArticle">
+                  <span class=" text-danger text-center d-none" id="msg" >you should fill photo filed</span>
+                  <span class=" text-success text-center d-none" id="msgg" >create article</span>
+                  <div class="row ml-4">
+                     <!-- disabled for input -->
+                     <div class="col-md-10"><label class="labels">title</label>
+                        <input name="title" type="text" class="form-control" placeholder="title"  id="name"
+                           required>
+                     </div>
+                     <div class="col-md-10">
+                        <label class="labels">tag</label>
+                        <select class="form-select item col-md-12" aria-label="select example" name="category">
+                           <option value='It'>It</option>
+                           <option value='Dev'>Dev</option>
+                           <option value='Design'>Design</option>
+                        </select>
+                     </div>
+                     <div class="col-md-10"><label class="labels">description</label>
+                        <input name="description" type="text" required class="form-control" 
+                           placeholder="description" >
+                     </div>
+                     <div class="col-md-10"><label class="labels">Text</label>
+                        <textarea type="text" required class="form-control"  placeholder="Text"
+                           name="body"></textarea>
+                     </div>
+                     <div class="col-md-10"><label class="labels">article photo</label>
+                     <input name="mainPhoto" type="file" class="form-control "
+                     id="photo" accept=".gif,.jpg,.jpeg,.png,.svg" multiple="multiple">
+                     </div>
+                     
+                  </div>
+                  <div class="row ml-4  p-2">
+                     <div class="m-2 ">
+                        <button type="submit" class="btn btn-success addArticleSubmit" id="#addArticleSubmit" value="Create Article">Create Article</button>
+                     </div>
+                  </div>
+                  <!-- </form> -->
+                  <!-- <form action="/createArticle/photo" method="post" enctype="multipart/form-data" class="col-md-9" >  -->
+                  <!-- <input name="mainPhoto" type="file" class="form-control col-md-9 ml-4"
+                     id="photo" accept=".gif,.jpg,.jpeg,.png,.svg" multiple="multiple"> -->
+                  <!-- <div class="m-2"><button class="btn btn-primary profile-button ml-3" type="submit"
+                        id="addArticleSubmit">save</button>
+                  </div> -->
+               </form>
+               <!-- <div>
+                <img src="/uploads/images/<%=  %>" alt="" style="width : 100px ; height:100px;" class="rounded-circle">
+             </div> -->
+               <!-- <form action="/profile/delete" method="get" style="padding-left: 38px;">
+                  <button class="btn btn-danger profile-button" type="submit" id="deletBtn">delete</button>
+               </form> -->
+               
+            </div>
+         </div>
+      </div>
+   </div>
+   </div>
+   </div>
+   <script src="/javascript/createArticle.js"></script>
+   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+
+   <!-- <script src="assets/js/script.js"></script> -->
+</body>
+
+</html>

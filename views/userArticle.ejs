@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link href="https://cdnjs.cloudflare.com/ajax/libs/simple-line-icons/2.4.1/css/simple-line-icons.min.css"
+      rel="stylesheet">
+   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+   <!-- <link rel="stylesheet" href="assets/css/style.css"> -->
+   <link rel="stylesheet" href="/style/cssprofilr.css">
+   <title>UserArticle</title>
+</head>
+
+<body>
+   <div class="container rounded bg-white mt-5 mb-5 col-md-10">
+      <nav class="navbar navbar-expand-lg navbar-light bg-light">
+         <a class="btn btn-dark" href="javascript:history.back()" >back to profile</a>
+         <div class="container-fluid">
+            <a class="navbar-brand" href="#">User Article</a>
+            <!-- <span class="navbar-toggler-icon"></span> -->
+            <div class="collapse navbar-collapse" id="navbarNav">
+               <ul class="navbar-nav">
+               </ul>
+            </div>
+         </div>
+      </nav>
+      <div class="row">
+         <span><% msg %> </span>
+         <div class="col-md-12 border-right">
+            <div class="p-5 py-5">
+               <div class="d-flex justify-content-between align-items-center row">
+                  <% for( let index = 0; index < userArticle.length; index++ ) { %>
+                  <div class="card m-2 col-md-5" >
+                     <img src="/uploads/images/article/<%= userArticle[index].mainPhoto %>" class="card-img-top" alt="">
+                     <div class="card-body">
+                       <h4 class="card-title fw-bold"><%= userArticle[index].title %></h4>
+                       <p class="card-text"><%= userArticle[index].body %></p>
+                       <p class="card-text">Author : <%= userArticle[index].author.userName %></p>
+                       <p class="card-text">Date : <%= userArticle[index].createAt.toLocaleDateString('en-US') %></p>
+                       <a href="/SpArticle/<%= userArticle[index].title %>" class="btn btn-primary m-1" >read more</a>
+                       <a href="/userArticle/delete/<%= userArticle[index].title %>" class="btn btn-danger m-1">delete</a>
+                       <a href="/createArticle/updateArticle/<%= userArticle[index].title %>" class="btn btn-success m-1">update</a>
+                     </div>
+                   </div>
+                   <% } %>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+   </div>
+   </div>
+   <script src="/javascript/profile.js"></script>
+   <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+   <script type="text/javascript"
+      src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.15/jquery.mask.min.js"></script>
+   <!-- <script src="assets/js/script.js"></script> -->
+</body>
+
+</html>

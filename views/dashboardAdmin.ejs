@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link href="https://cdnjs.cloudflare.com/ajax/libs/simple-line-icons/2.4.1/css/simple-line-icons.min.css"
+      rel="stylesheet">
+   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+   <!-- <link rel="stylesheet" href="assets/css/style.css"> -->
+   <link rel="stylesheet" href="/style/cssprofilr.css">
+   <title>Document</title>
+
+</head>
+
+<body>
+
+   <div class="container  bg-white mt-5  col-md-12">
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+         <div class="container">
+            <a class="navbar-brand" href="#!">FIRST BLOG</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+               data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+               aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+               <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                  <li class="nav-item"><a class="nav-link" href="/">Home</a></li>
+                  <!-- <li class="nav-item"><a class="nav-link" href="#!">About</a></li>
+                  <li class="nav-item"><a class="nav-link" href="#!">Contact</a></li> -->
+                  <li class="nav-item"><a class="nav-link" href="/signup">Signiup</a></li>
+                  <li class="nav-item"><a class="nav-link" href="/signin">Signin</a></li>
+                  <!-- <li class="nav-item"><a class="nav-link active" aria-current="page" href="#">Blog</a></li> -->
+                  <li><a class="nav-link btn  btn-dark  text-white ml-1" href="/admin/manageComment">Comment Blogger</a>
+                  </li>
+               </ul>
+            </div>
+         </div>
+      </nav>
+      <nav class="navbar navbar-expand-lg navbar-light bg-light">
+         <div class="container-fluid mt-4">
+            <a class="navbar-brand" href="#">DashboarDAdmin</a>
+            <div>
+               <% if (user.img) { %>
+                  <img src="/uploads/images/avatar/<%= user.img %>" style="width : 100px ; height:100px;"
+                     class="rounded-circle">
+                  <% }else { %>
+                     <img src="https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png"
+                        alt="" style="width : 100px ; height:100px;" class="rounded-circle">
+                     <% } %>
+                        <!-- <img src="/uploads/images/avatar/<%= user.img %>" alt="" style="width : 100px ; height:100px;" class="rounded-circle"> -->
+            </div>
+            <!-- <span class="navbar-toggler-icon"></span> -->
+            <div class="collapse navbar-collapse d-flex justify-content-around" id="navbarNav">
+               <ul class="navbar-nav">
+                  <li class="nav-item">
+                     <a class="nav-link  btn btn-dark  text-white" href="/resetPassword">change password</a>
+                  </li>
+                  <li class="nav-item">
+                     <a class="nav-link btn  btn-dark  text-white ml-1" href="/admin/manageBlogger">manage Blogger</a>
+                  </li>
+                  <li class="nav-item">
+                     <a class="nav-link btn  btn-dark  text-white ml-1" href="/admin/manageComment">Comment Blogger</a>
+                  </li>
+                  <li class="nav-item">
+                     <a class="nav-link btn  btn-dark  text-white ml-1" href="/admin/manageArticle">Article Blogger</a>
+                  </li>
+                  <li class="nav-item">
+
+                  </li>
+               </ul>
+            </div>
+         </div>
+         <div>
+            <input type="checkbox" class="checkbox" id="chk" name="dark" />
+            <label class="label" for="chk">
+               <i class="fas fa-moon"></i>
+               <i class="fas fa-sun"></i>
+               <div class="ball" id="ball"></div>
+            </label>
+         </div>
+      </nav>
+      <div class="row">
+         <div class="col-md-12 border-right">
+            <div class="p-5 py-5">
+               <div class="d-flex align-items-center mb-3">
+                  <form action="/profile/photo" method="post" enctype="multipart/form-data">
+                     <input name="photo" type="file" class="form-control" placeholder="photo" value="<%= user.photo %>"
+                        id="photo" accept=".gif,.jpg,.jpeg,.png,.svg" multiple="multiple">
+                     <div class="m-2"><button class="btn btn-primary profile-button" type="submit"
+                           id="saveBtn">save</button></div>
+                  </form>
+                  <!-- ////////////////////////////////////////////////////////////////////////////////// -->
+                  <form action="/profile/remove/photo" method="get" style="padding-left: 38px;">
+                     <button class="btn btn-danger profile-button mt-5" type="submit" id="deletBtn">delete photo</button>
+                  </form>
+               </div>
+               <form action="/profile" method="post">
+                  <span class=" text-danger text-center">
+                     <%= msg %>
+                  </span>
+                  <div class="row ml-4">
+                     <!-- disabled for input -->
+
+                     <div class="col-md-6"><label class="labels">user Name</label>
+                        <input name="userName" disabled type="text" class="form-control" placeholder="userName"
+                           value="<%= user.userName %>" id="name" required>
+                     </div>
+                     <div class="col-md-6"><label class="labels">first Name</label>
+                        <input name="firstName" disabled type="text" class="form-control" placeholder="first name"
+                           value="<%= user.firstName %>" id="name" required>
+                     </div>
+                     <div class="col-md-6"><label class="labels">last Name</label>
+                        <input name="lastName" disabled type="text" required class="form-control"
+                           value="<%= user.lastName %>" placeholder="last Name" name="lastName">
+                     </div>
+                  </div>
+                  <div class="row ml-4">
+                     <div class="col-md-6"><label class="labels">gender</label>
+                        <input name="gender" disabled type="text" class="form-control" placeholder="gender"
+                           name="gender" value="<%= user.gender %>" required>
+                     </div>
+                     <div class="col-md-6"><label class="labels">phoneNumber</label>
+                        <input name="phoneNumber" disabled type="text" class="form-control" placeholder="phoneNumber"
+                           value="<%= user.phoneNumber %>" required>
+                     </div>
+                  </div>
+               </form>
+               <div class="row ml-4 p-2">
+                  <div class="m-2"><button class="btn btn-primary profile-button" type="button"
+                        id="editBtn">edit</button>
+                  </div>
+                  <div class="m-2"><button class="btn btn-primary profile-button d-none" type="submit"
+                        id="saveBtn">save</button>
+                  </div>
+                  <div class="m-2 "><a href="/profile/logout" class="btn btn-danger profile-button"
+                        type="button">logout</a>
+                  </div>
+                  <div class="m-2 "><a href="/createArticle" class="btn btn-danger profile-button"
+                        type="button">createArticle</a>
+                  </div>
+                  <div class="m-2 "><a href="/userArticle/user" class="btn btn-danger profile-button" type="button">My
+                        Article</a>
+                  </div>
+               </div>
+               <form action="/profile/delete" method="get" class="form-delete" style="padding-left: 38px;">
+                  <button class="btn btn-danger profile-button" type="submit" id="deletBtn">delete</button>
+               </form>
+            </div>
+         </div>
+      </div>
+   </div>
+   </div>
+   </div>
+   <!-- /////////////////////////////////////////////////////////////////////////////////////// -->
+
+
+
+   <script src="/javascript/profile.js"></script>
+   <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+   <script type="text/javascript"
+      src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.15/jquery.mask.min.js"></script>
+   <!-- <script src="assets/js/script.js"></script> -->
+</body>
+
+</html>

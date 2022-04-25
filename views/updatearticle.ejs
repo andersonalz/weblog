@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+   <link href="https://cdnjs.cloudflare.com/ajax/libs/simple-line-icons/2.4.1/css/simple-line-icons.min.css"
+      rel="stylesheet">
+   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+   <script src="https://cdn.tiny.cloud/1/b8k4ao1uq3qsrklfi4gh3cos8rx9xkvcra736bci2qct87df/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+   <script>
+    tinymce.init({
+      selector: '#mytextarea'
+    });
+  </script>
+   <!-- <link rel="stylesheet" href="assets/css/style.css"> -->
+   <link rel="stylesheet" href="/style/cssprofilr.css">
+   <title>Document</title>
+</head>
+
+<body>
+   <div class="container rounded bg-white mt-5 mb-5 col-md-6">
+      <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div>
+            <% if (article.mainPhoto) { %>
+               <img src="/uploads/images/article/<%= article.mainPhoto %>" alt="" style="width : 100px ; height:100px;" class="rounded-circle">
+            <% }else { %>
+               <img src="https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png" alt="" style="width : 100px ; height:100px;" class="rounded-circle">
+            <% }  %>
+                     <!-- <img src="/uploads/images/avatar/<%= article.mainPhoto %>" alt="" style="width : 100px ; height:100px;" class="rounded-circle"> -->
+                  </div>
+         <div class="container-fluid">
+            <a class="navbar-brand" href="#">Create Article</a>
+            <!-- <span class="navbar-toggler-icon"></span> -->
+            <div class="collapse navbar-collapse" id="navbarNav">
+               <ul class="navbar-nav">
+                  <li class="nav-item">
+                  </li>
+               </ul>
+            </div>
+         </div>
+         
+         <form action="/dark" method="get" class="col-md-2 form-btn" >
+            <input type="checkbox" class="checkbox" id="chk" name="dark" />
+            <label class="label" for="chk">
+               <i class="fas fa-moon"></i>
+               <i class="fas fa-sun"></i>
+               <div class="ball" id="ball"></div>
+            </label>
+         </form>
+      </nav>
+      <div class="row">
+         <div class="col-md-12 border-right">
+            <div class="p-5 py-5">
+               
+               <form action="" enctype="multipart/form-data" id="formAddArticle"> 
+                  <span class=" text-danger text-center">
+                     <%= msg %>
+                  </span>
+                  <div class="row ml-4">
+                     <!-- disabled for input -->
+                     <div class="col-md-10"><label class="labels">title</label>
+                        <input name="title" type="text" class="form-control" placeholder="title"  id="name" value="<%= article.title %>">
+                     </div>
+                     <div class="col-md-10">
+                        <label class="labels">category</label>
+                        <select class="form-select item col-md-12" aria-label="select example" name="category" default="<%= article.category %>">
+                           <option value='It'>It</option>
+                           <option value='Dev'>Dev</option>
+                           <option value='Design'>Design</option>
+                        </select>
+                     </div>
+                        <input name="id" type="hidden" required class="form-control" 
+                           placeholder="description" value="<%= article._id %> ">
+                     
+                     <div class="col-md-10"><label class="labels">description</label>
+                        <input name="description" type="text" required class="form-control" 
+                           placeholder="description" value="<%= article.description %>">
+                     </div>
+                     <div class="col-md-10"><label class="labels">Text</label>
+                        <textarea type="text" required class="form-control"  placeholder=""
+                           name="body" value="<%= article.body %>"><%= article.body %></textarea>
+                     </div>
+                     <div class="col-md-10"><label class="labels">article photo</label>
+                     <input name="mainPhoto" type="file" class="form-control "
+                     id="photo" accept=".gif,.jpg,.jpeg,.png,.svg" multiple="multiple" style = "overflow-y: visible" >
+                     </div>
+                     
+                  </div>
+                  <div class="row ml-4  p-2">
+                     <div class="m-2 ">
+                        <button type="submit" class="btn btn-block create-account" id="#addArticleSubmit"
+                           value="Create Article">Update Article</button>
+                     </div>
+                  </div>
+                  <!-- </form> -->
+                  <!-- <form action="/createArticle/photo" method="post" enctype="multipart/form-data" class="col-md-9" >  -->
+                  <!-- <input name="mainPhoto" type="file" class="form-control col-md-9 ml-4"
+                     id="photo" accept=".gif,.jpg,.jpeg,.png,.svg" multiple="multiple"> -->
+                  <!-- <div class="m-2"><button class="btn btn-primary profile-button ml-3" type="submit"
+                        id="addArticleSubmit">save</button>
+                  </div> -->
+               </form>
+               <form method="post">
+                <textarea id="mytextarea" name="mytextarea">
+                  Hello, World!
+                </textarea>
+              </form>
+               <!-- <div>
+                <img src="/uploads/images/<%=  %>" alt="" style="width : 100px ; height:100px;" class="rounded-circle">
+             </div> -->
+               <!-- <form action="/profile/delete" method="get" style="padding-left: 38px;">
+                  <button class="btn btn-danger profile-button" type="submit" id="deletBtn">delete</button>
+               </form> -->
+               <a href="javascript:history.back()" >back to my article</a>
+            </div>
+         </div>
+      </div>
+   </div>
+   </div>
+   </div>
+   <script src="/javascript/UpdateArticle.js"></script>
+   <!-- <script src="assets/js/script.js"></script> -->
+</body>
+
+</html>
